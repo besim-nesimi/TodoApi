@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using TodoApi.Data;
 using TodoApi.Models;
 
@@ -62,6 +63,8 @@ namespace TodoApi.Controllers
             todoToModify.Completed = todo.Completed;
 
             context.Todos.Update(todoToModify);
+            context.SaveChanges();
+
             return Ok("The changes have been saved.");
         }
 
